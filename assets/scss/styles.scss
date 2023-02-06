@@ -1,0 +1,232 @@
+$main-color-light: #132b50;
+$main-color-dark: #fff;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  color: $main-color-light;
+  transition: 1s;
+}
+
+@function to-rem($px) {
+  $rem: $px/16;
+
+  @return $rem + rem;
+}
+
+::selection {
+  background-color: $main-color-light;
+  color: #fff;
+}
+
+%containers-flex {
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  @extend %containers-flex;
+  justify-content: center;
+
+  background-color: #1413501a;
+  height: 100vh;
+
+  .box {
+    border-radius: 1rem;
+    background-color: #fff;
+  }
+}
+
+.dark-container {
+  background-color: #292929;
+}
+
+.container .dark-box {
+  background-color: #132b50;
+
+  ::selection {
+    background-color: $main-color-dark;
+    color: $main-color-light;
+  }
+
+  *:not(input) {
+    color: $main-color-dark;
+  }
+
+  input:not(#cb-ss):focus {
+    box-shadow: 1px 1px 10px 1px $main-color-dark !important;
+  }
+
+  .content .password .footer-form #cb-ss {
+    &:checked {
+      &::before {
+        left: 30px;
+        background-color: $main-color-dark;
+      }
+      & {
+        border-color: $main-color-dark;
+      }
+    }
+  }
+
+  button {
+    background-color: $main-color-dark !important;
+    color: $main-color-light !important;
+
+    &:hover {
+      background-color: $main-color-light !important;
+      color: $main-color-dark !important;
+      box-shadow: 1px 1px 10px 1px #fff !important;
+    }
+  }
+}
+
+.content {
+  padding: to-rem(50);
+
+  .header {
+    @extend %containers-flex;
+    justify-content: space-between;
+
+    .title {
+      font-size: 1.4rem;
+    }
+
+    img {
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+    }
+  }
+
+  .profile {
+    @extend %containers-flex;
+    gap: 1rem;
+
+    margin: to-rem(32) 0;
+
+    img {
+      width: 80px;
+      height: 80px;
+      border: 2px solid;
+      border-radius: 50%;
+    }
+
+    div h3 {
+      font-weight: 500;
+      font-size: to-rem(10);
+    }
+
+    div h2 {
+      font-size: to-rem(18);
+    }
+  }
+
+  .password {
+    display: flex;
+
+    label {
+      font-weight: 600;
+    }
+
+    .input {
+      display: flex;
+      position: relative;
+
+      img:nth-child(2) {
+        position: absolute;
+        top: to-rem(19);
+        left: to-rem(15);
+      }
+
+      input {
+        padding: 1rem 3rem;
+        border-radius: 0.5rem;
+        border: 2px solid;
+        outline: 0;
+        margin: 0.5rem 1rem 0 0;
+
+        &:focus {
+          box-shadow: 1px 1px 10px 1px #000;
+        }
+      }
+    }
+
+    .footer-form {
+      @extend %containers-flex;
+      justify-content: space-between;
+
+      width: 280px;
+      margin: 32px 0;
+      height: 60px;
+
+      .staysigned-container {
+        @extend %containers-flex;
+        gap: to-rem(8);
+
+        #cb-ss {
+          width: 60px;
+          height: 36px;
+          appearance: none;
+          border: 2px solid #99a9c2;
+          border-radius: 100px;
+          position: relative;
+          cursor: pointer;
+
+          &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background-color: #99a9c2;
+            top: 5px;
+            left: 5px;
+            border-radius: 50%;
+            transition: 0.5s;
+          }
+
+          &:checked {
+            &::before {
+              left: 30px;
+              background-color: $main-color-light;
+            }
+
+            & {
+              border-color: $main-color-light;
+            }
+          }
+        }
+
+        p {
+          font-weight: 700;
+          font-size: to-rem(12);
+        }
+      }
+
+      button {
+        background-color: $main-color-light;
+        padding: 0.9rem;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 0.5rem;
+        border: none;
+        transition: 0.5s;
+        font-weight: bolder;
+
+        &:hover {
+          background: none;
+          box-shadow: 1px 1px 10px 1px $main-color-light;
+          color: $main-color-light;
+        }
+      }
+    }
+
+    a {
+      text-decoration: none;
+      font-weight: 600;
+    }
+  }
+}
