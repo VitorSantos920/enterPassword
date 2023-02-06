@@ -113,7 +113,7 @@ $main-color-dark: #fff;
 
   .profile {
     @extend %containers-flex;
-    @extend %containers-flex;
+    @extend %containers-align;
 
     gap: 1rem;
     margin: to-rem(32) 0;
